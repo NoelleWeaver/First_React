@@ -1,5 +1,8 @@
 import { FaCat } from "react-icons/fa";
-import Question from '../components/Question';
+import { default as Topics } from '../components/Question';
+import { useState } from "react";
+import { useViewTransitionState } from "react-router-dom";
+import Button from '../components/Button';
 
 function Test() {
     const sports = "Badminton"
@@ -7,19 +10,38 @@ function Test() {
 
     let w="500", h="500", alt="bean"
     let info = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima aperiam, recusandae quas tempora impedit quam dolore minus inventore nemo! Aut?'
-    let triggered = [3,45,34]
+    let triggered = []
+    // if(triggered.length <= 0){
+    //     return(<h1>This rendered first haha</h1>)
+    // }
+    const [count, setCount] = useState(0)
+    const handleClick = () => {
+        setCount(count + 1)
+    }
+
+    // let content;
+    // if(isLogginIn){
+    //     content = <AdminPanel />
+    // }else{
+    //     content = <LoginForm />
+    // }
+    // return content
+
     return(
         <>
+        <Button count={count} onClick={handleClick}/>
+        <Button count={count} onClick={handleClick}/>
         <h1>Noelle Weaver</h1>
         <p>Hello my name is Noelle Weaver</p>
         <h3> {sports}</h3>
         <img src={src} width={w} height={h} alt={alt}></img>
         <button><FaCat  size="500px" style={{backgroundColor: "pink", color: "darkblue"}}/></button>
-        <Question title="One Piece" info={info}/>
+        <Topics title="One Piece" info={info}/>
 
         {
             triggered.length > 0 ?<h1>Hello Data</h1>: <h1>Nothing</h1>
         }
+        {/* isLoggedIn ? (<AdminPanel />):(<LoginPage />) */}
         </>
     )
     
